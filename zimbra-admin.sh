@@ -1,4 +1,5 @@
 #!/bin/bash
+# Zool - Zoltan Vigh - 2013.05.25
 
 USER='user@domain.com'
 DOMAINS=$(cat /tmp/domains)
@@ -10,11 +11,13 @@ zmprov ma ${USER} +zimbraAdminConsoleUIComponents DLListView
 
 for DOMAIN in ${DOMAINS}; do
     echo ${DOMAIN}
+    # alias ACL
     zmprov grr domain ${DOMAIN} usr ${USER} +deleteAlias
     zmprov grr domain ${DOMAIN} usr ${USER} +listAlias
     zmprov grr domain ${DOMAIN} usr ${USER} createAlias
     zmprov grr domain ${DOMAIN} usr ${USER} listAlias
 
+    # account ACL
     zmprov grr domain ${DOMAIN} usr ${USER} +deleteAccount
     zmprov grr domain ${DOMAIN} usr ${USER} +listAccount
     zmprov grr domain ${DOMAIN} usr ${USER} +renameAccount
@@ -22,6 +25,7 @@ for DOMAIN in ${DOMAINS}; do
     zmprov grr domain ${DOMAIN} usr ${USER} createAccount
     zmprov grr domain ${DOMAIN} usr ${USER} listDomain
 
+    # distribution list ACL
     zmprov grr domain ${DOMAIN} usr ${USER} createDistributionList
     zmprov grr domain ${DOMAIN} usr ${USER} addDistributionListMember
     zmprov grr domain ${DOMAIN} usr ${USER} removeDistributionListMember
