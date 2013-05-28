@@ -33,6 +33,7 @@ for DOMAIN in ${DOMAINS}; do
     zmprov grr domain ${DOMAIN} usr ${USER} modifyDistributionList
     zmprov grr domain ${DOMAIN} usr ${USER} deleteDistributionList
     zmprov grr domain ${DOMAIN} usr ${USER} renameDistributionList
+    zmprov grr domain ${DOMAIN} usr ${USER} listDistributionList
 
     zmprov grr domain ${DOMAIN} usr ${USER} set.account.zimbraAccountStatus
     zmprov grr domain ${DOMAIN} usr ${USER} set.account.sn
